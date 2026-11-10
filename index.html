@@ -979,6 +979,7 @@ function apply(d, src, first) {
   var sig = JSON.stringify(d.letters || []);
   S.src = src; S.role = d.role || "reader"; S.open = d.open !== false;
   S.names = Array.isArray(d.names) ? d.names : []; S.texts = d.texts || {};
+  $("#pickBtn").hidden = $("#shotBtn").hidden = S.role === "writer";
   header();
   if (first || sig !== S.sig) {
     S.sig = sig; S.items = (d.letters || []).filter(valid);
