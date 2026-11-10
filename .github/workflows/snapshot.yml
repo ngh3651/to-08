@@ -1,0 +1,33 @@
+# 6시간마다 칠판 편지 묶음(잠긴 파일)을 이 저장소에 백업한다.
+# Railway 서버가 사라지면 아무것도 바꾸지 않고 마지막 백업을 그대로 둔다.
+name: snapshot
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency: snapshot
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 칠판 백업 받기
+        run: |
+          if ! curl -fsS --max-time 30 https://byeol-production.up.railway.app/api/snapshot -o new.json; then
+            echo "서버가 응답하지 않아요. 마지막 백업을 그대로 둡니다."; exit 0
+          fi
+          jq -e '.v == 1 and (.iv|type) == "string" and (.ct|type) == "string" and (.n|type) == "number"' new.json > /dev/null || { echo "백업 모양이 이상해서 건너뜁니다."; exit 0; }
+          old=$(jq -r '.n // 0' snapshot.json 2>/dev/null || echo 0)
+          new=$(jq -r '.n' new.json)
+          if [ "$new" -eq 0 ] && [ "$old" -gt 0 ]; then echo "편지가 0개로 나와서 덮어쓰지 않아요."; exit 0; fi
+          if cmp -s new.json snapshot.json; then echo "바뀐 게 없어요."; exit 0; fi
+          mv new.json snapshot.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add snapshot.json
+          git commit -m "칠판 백업 (편지 ${new}개)"
+          git push
+          curl -fsS -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${{ github.repository }}/pages/builds" > /dev/null || echo "페이지 다시 만들기 요청은 건너뜀"
