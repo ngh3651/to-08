@@ -47,11 +47,12 @@ button{background:none;border:0;cursor:pointer}
 .c-uline{left:300px;top:184px;width:520px;height:30px;color:var(--yellow);transform:rotate(-1deg)}
 .c-uline path{fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round}
 .c-names{left:560px;top:224px;transform:translateX(-50%);font-family:var(--hand);font-size:33px;color:rgba(242,239,230,.88);white-space:nowrap;word-spacing:.3em}
-.c-pil{left:214px;top:290px;width:694px;display:flex;align-items:stretch;transform:rotate(-1deg)}
+.c-pil{left:196px;top:290px;width:740px;display:flex;align-items:stretch;transform:rotate(-1deg)}
 .c-pil .bx{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;color:var(--pink)}
 .c-pil .bx path{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.c-pil .pl{flex:none;width:138px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--ui);font-weight:800;font-size:25px;line-height:1.3;letter-spacing:.04em;color:var(--pink)}
-.c-pil .pr{flex:1;min-width:0;padding:18px 26px 16px 24px}
+.c-pil .pl{flex:none;width:112px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--ui);font-weight:800;font-size:25px;line-height:1.3;letter-spacing:.04em;color:var(--pink)}
+.c-pil .pr{flex:1;min-width:0;padding:18px 22px 16px 20px}
+.c-pil .v,.c-pil .cp{white-space:nowrap}
 .c-pil .v{font-family:var(--ui);font-weight:700;font-size:25px;line-height:1.45;letter-spacing:.02em}
 .c-pil .rf:empty{display:none}
 .c-pil .rf{margin-top:2px;text-align:right;font-family:var(--hand);font-weight:700;font-size:21px;color:var(--yellow)}
@@ -152,9 +153,13 @@ body.writer #chip{bottom:calc(96px + env(safe-area-inset-bottom))}
 .tabs button[aria-pressed=true]{background:var(--omr);color:#fff}
 .padw{position:relative;margin-top:12px;border:6px solid #B3B8B1;background-color:var(--board);background-image:var(--dust)}
 #pad{display:block;width:100%;height:auto;aspect-ratio:1/1;touch-action:none;cursor:crosshair}
-#pad path{fill:none;stroke:var(--c);stroke-width:34;stroke-linecap:round;stroke-linejoin:round}
+#pad path{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .padtip{position:absolute;left:0;right:0;top:44%;text-align:center;font-family:var(--hand);font-size:22px;color:rgba(242,239,230,.55);pointer-events:none}
-#padClear{position:absolute;right:8px;bottom:8px;padding:6px 12px;border-radius:14px;background:rgba(242,239,230,.14);color:var(--chalk);font-size:13px}
+.padbtns{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}
+.padbtns button{padding:7px 12px;border-radius:14px;background:rgba(242,239,230,.16);color:var(--chalk);font-family:var(--ui);font-size:13px}
+.padbtns button:disabled{opacity:.35}
+.chips.pw button{flex:1;min-width:0;height:52px;flex-direction:column;gap:5px;font-family:var(--ui);font-size:12.5px;color:var(--chalk)}
+.chips.pw i{display:block;width:44px;border-radius:99px;background:var(--c)}
 .go{display:block;width:100%;height:54px;margin-top:18px;border-radius:27px;background:var(--board);color:var(--chalk);font-family:var(--ui);font-size:17px;font-weight:700}
 .err{min-height:1.5em;margin-top:10px;text-align:center;font-family:var(--ui);font-size:14px;color:var(--omr)}
 
@@ -196,8 +201,8 @@ body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
 <div id="cluster">
 <div class="c-d chalky" style="left:34px;top:26px;width:170px;height:230px;color:var(--yellow)" aria-hidden="true"><svg viewBox="0 0 170 230"><path d="M85 34v180M40 80h90" style="stroke-width:8"/><path d="M85 22V4M114 29.8l9-15.6M135.2 51l15.6-9M143 80h18M135.2 109l15.6 9M34.8 109l-15.6 9M27 80H9M34.8 51l-15.6-9M56 29.8l-9-15.6"/></svg></div>
 <div class="c-d chalky" style="left:910px;top:44px;width:172px;height:140px" aria-hidden="true"><svg viewBox="0 0 172 140"><path d="M18 86C40 92 66 96 88 92c16-3 28-12 36-22 4-6 10-10 17-9 7 1 11 6 11 11l10 4-11 4c-5 18-27 32-55 34-30 2-58-10-78-28z"/><path d="M70 92C62 66 70 36 100 14c4 26 0 50-12 76"/><path d="M80 68c6-10 12-16 20-22"/><path d="M18 86L3 74M18 86L5 93M18 86L9 104"/><path d="M141 68h.5"/><path d="M160 79c6 9 6 19 0 29" style="color:var(--green,#B5DE9C);stroke:#B5DE9C"/><path d="M163 88c5-3 8 0 7 4M161 99c-5-1-7 2-5 6" style="stroke:#B5DE9C"/></svg></div>
-<div class="c-d chalky" style="left:36px;top:322px;width:172px;height:132px" aria-hidden="true"><svg viewBox="0 0 172 132"><path d="M86 22C67 10 39 8 11 14v98c28-6 56-4 75 8 19-12 47-14 75-8V14c-28-6-56-4-75 8zM86 22v98"/><path d="M101 40h45M101 54h45M101 68h40M101 82h45"/><path d="M48 36v50M34 52h28" style="stroke:var(--yellow)"/><path d="M121 112v17l6-6 6 6v-18" style="stroke:var(--pink)"/></svg></div>
-<div class="c-d chalky" style="left:928px;top:296px;width:150px;height:172px" aria-hidden="true"><svg viewBox="0 0 150 172"><path d="M75 6v24M66 15h18" style="stroke:var(--yellow)"/><path d="M40 72l35-36 35 36M48 64v98h54V64M14 162h122M66 162v-28a9 9 0 0 1 18 0v28"/><path d="M75 104c-5-5-13-2-13 4 0 6 7 10 13 15 6-5 13-9 13-15 0-6-8-9-13-4z" style="stroke:var(--pink)"/></svg></div>
+<div class="c-d chalky" style="left:12px;top:322px;width:172px;height:132px" aria-hidden="true"><svg viewBox="0 0 172 132"><path d="M86 22C67 10 39 8 11 14v98c28-6 56-4 75 8 19-12 47-14 75-8V14c-28-6-56-4-75 8zM86 22v98"/><path d="M101 40h45M101 54h45M101 68h40M101 82h45"/><path d="M48 36v50M34 52h28" style="stroke:var(--yellow)"/><path d="M121 112v17l6-6 6 6v-18" style="stroke:var(--pink)"/></svg></div>
+<div class="c-d chalky" style="left:952px;top:296px;width:150px;height:172px" aria-hidden="true"><svg viewBox="0 0 150 172"><path d="M75 6v24M66 15h18" style="stroke:var(--yellow)"/><path d="M40 72l35-36 35 36M48 64v98h54V64M14 162h122M66 162v-28a9 9 0 0 1 18 0v28"/><path d="M75 104c-5-5-13-2-13 4 0 6 7 10 13 15 6-5 13-9 13-15 0-6-8-9-13-4z" style="stroke:var(--pink)"/></svg></div>
 <svg class="c-d chalky" viewBox="0 0 48 48" style="left:228px;top:244px;width:56px;height:56px;color:var(--pink);transform:rotate(-12deg)" aria-hidden="true"><use href="#s-music"/></svg>
 <svg class="c-d chalky" viewBox="0 0 48 48" style="left:250px;top:22px;width:38px;height:38px;color:var(--yellow)" aria-hidden="true"><use href="#s-sparkle"/></svg>
 <svg class="c-d chalky" viewBox="0 0 48 48" style="left:860px;top:236px;width:34px;height:34px;color:#9DCCEB" aria-hidden="true"><use href="#s-sparkle"/></svg>
@@ -206,7 +211,7 @@ body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
 <svg class="c-uline chalkL" viewBox="0 0 240 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12C28 4 48 17 76 10S126 3 154 11s52 6 83-3"/></svg>
 <svg class="c-d chalky" viewBox="0 0 48 48" style="left:846px;top:38px;width:62px;height:62px;color:var(--pink);transform:rotate(14deg)" aria-hidden="true"><use href="#s-heart"/></svg>
 <p class="c-names chalky" id="names"></p>
-<div class="c-pil" id="pil"><svg class="bx chalky" viewBox="0 0 720 200" preserveAspectRatio="none" aria-hidden="true"><path d="M8 10C180 6 540 12 712 7c2 63-2 126 3 185-180 4-540-2-709 3 3-55-2-118 2-185zM140 9c-3 61 3 122-1 184"/></svg><div class="pl chalky">필적<br>확인란</div><div class="pr"><p class="v chalky glow" id="pv"></p><p class="rf chalky" id="pref"></p><p class="cp chalky glow" id="pcp"></p></div></div>
+<div class="c-pil" id="pil"><svg class="bx chalky" viewBox="0 0 720 200" preserveAspectRatio="none" aria-hidden="true"><path d="M8 10C180 6 540 12 712 7c2 63-2 126 3 185-180 4-540-2-709 3 3-55-2-118 2-185zM109 9c-3 61 3 122-1 184"/></svg><div class="pl chalky">필적<br>확인란</div><div class="pr"><p class="v chalky glow" id="pv"></p><p class="rf chalky" id="pref"></p><p class="cp chalky glow" id="pcp"></p></div></div>
 </div>
 <div id="items"></div>
 <div id="ghost" hidden></div>
@@ -251,11 +256,12 @@ body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
 <div class="rows"><div class="row"><span class="lb">그림</span><div class="ct"><div class="chips five" id="dStamp"></div></div></div></div>
 </div>
 <div id="drawPane" hidden>
-<div class="padw"><svg id="pad" class="chalky" viewBox="0 0 1000 1000" aria-label="손가락으로 그리는 칸"></svg><p class="padtip" id="padTip">손가락으로 그려 보세요</p><button type="button" id="padClear">다시 그리기</button></div>
+<div class="padw"><svg id="pad" class="chalky" viewBox="0 0 1000 1000" aria-label="손가락으로 그리는 칸"></svg><p class="padtip" id="padTip">손가락으로 그려 보세요</p><div class="padbtns"><button type="button" id="padUndo">한 획 지우기</button><button type="button" id="padClear">다 지우기</button></div></div>
 </div>
 <div class="rows">
 <div class="row"><span class="lb">분필</span><div class="ct"><div class="sticks" id="dColor"></div></div></div>
-<div class="row"><span class="lb">크기</span><div class="ct"><div class="chips sz" id="dSize"></div></div></div>
+<div class="row" id="rowSize"><span class="lb">크기</span><div class="ct"><div class="chips sz" id="dSize"></div></div></div>
+<div class="row" id="rowPen" hidden><span class="lb">굵기</span><div class="ct"><div class="chips pw" id="dPen"></div></div></div>
 </div>
 <button type="button" class="go" id="dGo">칠판에 붙이러 가기</button>
 <p class="err" id="dErr" role="alert"></p>
@@ -281,6 +287,9 @@ var CHALK_KO = { white: "흰 분필", yellow: "노란 분필", pink: "분홍 분
 var FONTS = { pen: ['"Nanum Pen Script"', 1.3, "펜글씨"], gaegu: ['"Gaegu"', 1, "동글"], gamja: ['"Gamja Flower"', 1, "삐뚤"], melody: ['"Hi Melody"', 1.06, "멜로디"], dokdo: ['"East Sea Dokdo"', 1.34, "휘갈김"] };
 var STAMPS = { cross: ["십자가"], bible: ["성경책"], dove: ["비둘기"], church: ["교회"], music: ["음표"], heart: ["하트"], star: ["별"], flower: ["꽃"], smile: ["웃는 얼굴"], sparkle: ["반짝"], mochi: ["찹쌀떡", "착 붙어!"], fork: ["포크", "잘 찍어!"], tissue: ["휴지", "잘 풀어!"], mirror: ["거울", "잘 봐!"] };
 var SIZES = [["s", 0.72, "작게"], ["m", 1, "보통"], ["l", 1.45, "크게"]];
+var PENS = [[16, "얇게"], [32, "보통"], [58, "굵게"]], CKEYS = Object.keys(CHALK);
+/* 직접 그린 낙서: 획마다 맨 앞에 "2000+색*10+굵기,0" 표시를 붙여 색과 굵기를 같이 저장한다 */
+function strokeTag(c, w) { return (2000 + Math.max(0, CKEYS.indexOf(c)) * 10 + w) + ",0"; }
 var CL = [-560, -290, 560, 270], MAXLEN = 200, FS = 26, GAP = 16;
 var reduce = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
 var S = { role: "", key: "", src: "", open: true, names: [], texts: {}, items: [], sig: "", mine: {}, draft: null, placing: false, zoom: null, bar: null, poll: 0, k: null, h: {}, ext: [-700, -420, 700, 420] };
@@ -384,10 +393,13 @@ function lenScale(t) { var n = Array.from(t).length; return n <= 16 ? 1.3 : n <=
 function drawSvg(path) {
   var s = sEl("svg", { viewBox: "0 0 1000 1000", "aria-hidden": "true", "class": "draw" });
   String(path || "").split(";").forEach(function (st) {
-    var pts = st.trim().split(" ").filter(Boolean).map(function (p) { return p.split(",").map(Number); }).filter(function (p) { return p.length === 2 && isFinite(p[0]) && isFinite(p[1]); });
+    var pts = st.trim().split(" ").filter(Boolean).map(function (p) { return p.split(",").map(Number); }).filter(function (p) { return p.length === 2 && isFinite(p[0]) && isFinite(p[1]); }), tag = null, e, d;
+    if (pts.length && pts[0][0] >= 2000) { tag = pts.shift()[0] - 2000; }
     if (!pts.length) return;
-    var d = "M" + pts[0][0] + " " + pts[0][1] + (pts.length === 1 ? "l0.1 0" : pts.slice(1).map(function (p) { return "L" + p[0] + " " + p[1]; }).join(""));
-    s.appendChild(sEl("path", { d: d }));
+    d = "M" + pts[0][0] + " " + pts[0][1] + (pts.length === 1 ? "l0.1 0" : pts.slice(1).map(function (p) { return "L" + p[0] + " " + p[1]; }).join(""));
+    e = sEl("path", { d: d });
+    if (tag != null) { e.style.stroke = chalk(CKEYS[Math.floor(tag / 10)]); e.style.strokeWidth = (PENS[tag % 10] || PENS[1])[0]; }
+    s.appendChild(e);
   });
   return s;
 }
@@ -685,7 +697,7 @@ function paintBoard() {
     if (!$("#names").hidden) paintText(y, $("#names"), 0);
     (function () {
       var pil = $("#pil"), w = pil.offsetWidth, h = pil.offsetHeight, l = pil.offsetLeft - 560, t = pil.offsetTop - 290, bx = new Path2D(), cp = $("#pcp");
-      bx.addPath(new Path2D("M8 10C180 6 540 12 712 7c2 63-2 126 3 185-180 4-540-2-709 3 3-55-2-118 2-185zM140 9c-3 61 3 122-1 184"), new DOMMatrix().translate(l, t).scale(w / 720, h / 200));
+      bx.addPath(new Path2D("M8 10C180 6 540 12 712 7c2 63-2 126 3 185-180 4-540-2-709 3 3-55-2-118 2-185zM109 9c-3 61 3 122-1 184"), new DOMMatrix().translate(l, t).scale(w / 720, h / 200));
       y.save(); y.translate(0, t + h / 2); y.rotate(-Math.PI / 180); y.translate(0, -t - h / 2);
       y.strokeStyle = "#F2A2B6"; y.lineWidth = 3.2; y.stroke(bx);
       y.setLineDash([9, 7]); y.globalAlpha = 0.65; y.lineWidth = 2; y.beginPath(); y.moveTo(l + cp.offsetLeft, t + cp.offsetTop + 1); y.lineTo(l + cp.offsetLeft + cp.offsetWidth, t + cp.offsetTop + 1); y.stroke();
@@ -700,8 +712,8 @@ function paintBoard() {
       y.save(); y.translate(it.x, it.y); y.rotate(rot * Math.PI / 180); y.translate(-it.x, -it.y);
       var cy = it.y - (st && st[1] ? ds * 0.14 : 0);
       if (it.shape === "draw") {
-        y.save(); y.translate(it.x - ds / 2, cy - ds / 2); y.scale(ds / 1000, ds / 1000); y.strokeStyle = chalk(it.color); y.lineWidth = 34;
-        Array.prototype.forEach.call(b.querySelectorAll("path"), function (p) { y.stroke(new Path2D(p.getAttribute("d"))); });
+        y.save(); y.translate(it.x - ds / 2, cy - ds / 2); y.scale(ds / 1000, ds / 1000);
+        Array.prototype.forEach.call(b.querySelectorAll("path"), function (p) { var cs = getComputedStyle(p); y.strokeStyle = cs.stroke; y.lineWidth = parseFloat(cs.strokeWidth) || 34; y.stroke(new Path2D(p.getAttribute("d"))); });
         y.restore();
       } else paintStamp(y, STAMPS[it.shape] ? it.shape : "heart", it.x, cy, ds, 0, chalk(it.color), 1);
       y.restore();
@@ -852,6 +864,8 @@ function syncDoodle() {
   c = chalk(d.color); draw = d.tab === "draw";
   $("#tStamp").setAttribute("aria-pressed", !draw); $("#tDraw").setAttribute("aria-pressed", draw);
   $("#stampPane").hidden = draw; $("#drawPane").hidden = !draw;
+  $("#rowSize").hidden = draw; $("#rowPen").hidden = !draw;
+  each("#dPen button", function (b) { b.setAttribute("aria-pressed", +b.dataset.v === (d.pw == null ? 1 : d.pw)); b.style.setProperty("--c", c); });
   fillItem($("#pvDood"), { kind: "doodle", id: "new", shape: d.shape === "draw" ? "heart" : d.shape, color: d.color, size: d.size, rot: 0 });
   each("#dStamp button", function (b) { b.setAttribute("aria-pressed", b.dataset.v === d.shape); b.style.setProperty("--c", c); });
   each("#dColor button", function (b) { b.setAttribute("aria-pressed", b.dataset.v === d.color); });
@@ -869,7 +883,7 @@ function stepPlace() {
     save("nick", d.nick);
   }
   if (d.kind === "doodle" && !d.moving) {
-    if (d.tab === "draw") { d.path = encodePad(); d.shape = "draw"; if (!d.path) { $("#dErr").textContent = "칸 안에 먼저 그려 주세요."; return; } }
+    if (d.tab === "draw") { d.path = encodePad(); d.shape = "draw"; d.size = 1; if (PAD.strokes.length) d.color = PAD.strokes[0].c; if (!d.path) { $("#dErr").textContent = "칸 안에 먼저 그려 주세요."; return; } }
     else if (d.shape === "draw") d.shape = "heart";
     d.nick = load("nick", "");
   }
@@ -937,43 +951,62 @@ function exportAll() {
 
 /* ---------- 직접 그리기 ---------- */
 var PAD = { strokes: [], cur: null, n: 0 };
+function padPen() { var d = S.draft || {}; return d.pw == null ? 1 : d.pw; }
 function padPoint(e) { var r = $("#pad").getBoundingClientRect(); return [Math.round((e.clientX - r.left) / r.width * 1000), Math.round((e.clientY - r.top) / r.height * 1000)]; }
 function padRender() {
   var s = $("#pad"); s.textContent = "";
-  PAD.strokes.forEach(function (st) { s.appendChild(sEl("path", { d: "M" + st.map(function (p) { return p[0] + " " + p[1]; }).join("L") + (st.length === 1 ? "l0.1 0" : "") })); });
+  PAD.strokes.forEach(function (st) {
+    var e = sEl("path", { d: "M" + st.pts.map(function (p) { return p[0] + " " + p[1]; }).join("L") + (st.pts.length === 1 ? "l0.1 0" : "") });
+    e.style.stroke = chalk(st.c); e.style.strokeWidth = PENS[st.w][0]; s.appendChild(e);
+  });
   $("#padTip").hidden = PAD.strokes.length > 0;
+  $("#padUndo").disabled = $("#padClear").disabled = !PAD.strokes.length;
 }
 function encodePad() {
   var pts = [], x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, k, ox, oy;
-  PAD.strokes.forEach(function (st) { st.forEach(function (p) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }); });
+  PAD.strokes.forEach(function (st) { st.pts.forEach(function (p) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }); });
   if (!PAD.strokes.length) return "";
   k = 860 / Math.max(x1 - x0, y1 - y0, 60); ox = 500 - (x0 + x1) / 2 * k; oy = 500 - (y0 + y1) / 2 * k;
-  return PAD.strokes.map(function (st) { return st.map(function (p) { return Math.round(p[0] * k + ox) + "," + Math.round(p[1] * k + oy); }).join(" "); }).join(";").slice(0, 6000).replace(/[;\s]+$/, "");
+  var out = "";
+  PAD.strokes.forEach(function (st) {
+    var part = strokeTag(st.c, st.w) + " " + st.pts.map(function (p) { return Math.round(p[0] * k + ox) + "," + Math.round(p[1] * k + oy); }).join(" ");
+    if ((out + ";" + part).length <= 6000) out += (out ? ";" : "") + part;
+  });
+  return out;
 }
 (function () {
   var pad = $("#pad");
-  pad.addEventListener("pointerdown", function (e) { if (PAD.n > 600) return; try { pad.setPointerCapture(e.pointerId); } catch (x) {} PAD.cur = [padPoint(e)]; PAD.strokes.push(PAD.cur); PAD.n++; padRender(); e.preventDefault(); });
+  pad.addEventListener("pointerdown", function (e) { if (PAD.n > 600) return; try { pad.setPointerCapture(e.pointerId); } catch (x) {} PAD.cur = { c: S.draft.color, w: padPen(), pts: [padPoint(e)] }; PAD.strokes.push(PAD.cur); PAD.n++; padRender(); e.preventDefault(); });
   pad.addEventListener("pointermove", function (e) {
     if (!PAD.cur || PAD.n > 600) return;
-    var p = padPoint(e), l = PAD.cur[PAD.cur.length - 1];
+    var p = padPoint(e), l = PAD.cur.pts[PAD.cur.pts.length - 1];
     if (Math.hypot(p[0] - l[0], p[1] - l[1]) < 9) return;
-    PAD.cur.push(p); PAD.n++; padRender();
+    PAD.cur.pts.push(p); PAD.n++; padRender();
   });
   function end() { PAD.cur = null; }
   pad.addEventListener("pointerup", end); pad.addEventListener("pointercancel", end);
   $("#padClear").onclick = function () { PAD.strokes = []; PAD.n = 0; padRender(); };
+  $("#padUndo").onclick = function () { var st = PAD.strokes.pop(); if (st) PAD.n -= st.pts.length; padRender(); };
 })();
 
 /* ---------- 시작 ---------- */
 function header() {
-  var T = S.texts || {}, v = T.verse || "너의 행사를 여호와께 맡기라 그리하면 네가 경영하는 것이 이루어지리라";
+  var T = S.texts || {}, v = T.verse || "내게 능력 주시는 자 안에서 내가 모든 것을 할 수 있느니라";
   $("#tTo").textContent = T.to || "To.";
   $("#tWho").textContent = T.who || "08또래";
   $("#names").textContent = S.names.join("  "); $("#names").hidden = !S.names.length;
-  $("#pv").textContent = v; $("#pcp").textContent = T.copy || v;
+  $("#pv").textContent = v; $("#pcp").textContent = T.copy || v; fitPil();
   $("#pref").textContent = T.ref || "";
   $("#from").textContent = T.from || "From. 청년부 일동";
   D.title = (T.to || "To.") + " " + (T.who || "08또래");
+}
+/* 필적 확인란: 말씀이 길어도 한 줄에 들어가게 글씨 크기를 맞춘다 */
+function fitPil() {
+  [["#pv", 25], ["#pcp", 44]].forEach(function (q) {
+    var e = $(q[0]); e.style.fontSize = q[1] + "px";
+    var room = e.clientWidth, need = e.scrollWidth;
+    if (need > room && room > 0) e.style.fontSize = Math.floor(q[1] * room / need * 0.98 * 10) / 10 + "px";
+  });
 }
 function apply(d, src, first) {
   var sig = JSON.stringify(d.letters || []);
@@ -1018,7 +1051,7 @@ function intro() {
 function showBoard(d, src) {
   $("#gate").hidden = true; $("#ctl").hidden = false;
   apply(d, src, true);
-  if (D.fonts && D.fonts.ready) D.fonts.ready.then(function () { layout(); });
+  if (D.fonts && D.fonts.ready) D.fonts.ready.then(function () { fitPil(); layout(); });
   intro();
 }
 function boot() {
@@ -1069,6 +1102,12 @@ SIZES.forEach(function (z) {
   var b = el("button", "", z[2]); b.type = "button"; b.dataset.v = z[1];
   b.onclick = function () { S.draft.size = z[1]; syncDoodle(); };
   $("#dSize").appendChild(b);
+});
+PENS.forEach(function (p, i) {
+  var b = el("button"), ln = el("i"); b.type = "button"; b.dataset.v = i; b.setAttribute("aria-label", "분필 굵기 " + p[1]);
+  ln.style.height = Math.max(3, Math.round(p[0] / 4.2)) + "px"; b.appendChild(ln); b.appendChild(D.createTextNode(p[1]));
+  b.onclick = function () { S.draft.pw = i; syncDoodle(); };
+  $("#dPen").appendChild(b);
 });
 $("#tStamp").onclick = function () { S.draft.tab = "stamp"; syncDoodle(); };
 $("#tDraw").onclick = function () { S.draft.tab = "draw"; syncDoodle(); padRender(); };
