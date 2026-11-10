@@ -116,9 +116,10 @@ body.writer #chip{bottom:calc(96px + env(safe-area-inset-bottom))}
 .zd{display:flex;flex-direction:column;align-items:center;margin:0 auto}
 .zd svg{width:150px;height:150px}
 .zd em{font-style:normal;font-family:var(--hand);font-weight:700;font-size:30px}
-.ztools{display:flex;gap:16px;align-items:center;margin-top:14px;padding-top:10px;border-top:1px dashed rgba(242,239,230,.3);font-size:13.5px;color:rgba(242,239,230,.72)}
-.ztools span{margin-right:auto}
-.ztools button{padding:6px 2px;color:var(--chalk);text-decoration:underline;text-underline-offset:3px}
+.ztools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px dashed rgba(242,239,230,.3);font-size:13.5px;color:rgba(242,239,230,.72)}
+.ztools span{flex:1 0 100%}
+.ztools button{flex:1;min-height:48px;padding:0 10px;border:1.5px solid rgba(242,239,230,.55);border-radius:24px;font-size:15.5px;color:var(--chalk);white-space:nowrap;touch-action:manipulation}
+.ztools button:first-of-type{border-color:transparent;background:var(--yellow);color:#22372D;font-weight:700}
 .pager{display:flex;align-items:center;gap:22px;font-family:var(--hand);font-size:21px}
 .pager button{width:48px;height:48px;border:2px solid rgba(242,239,230,.5);border-radius:50%;font-family:var(--ui);font-size:24px;line-height:1}
 .pager button:disabled{opacity:.25}
@@ -196,7 +197,7 @@ body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
 <symbol id="s-music" viewBox="0 0 48 48"><path d="M17 34V12l18-4v22M17 17l18-4"></path><ellipse cx="13" cy="34.5" rx="4.2" ry="3.4" fill="currentColor" fill-opacity="0.85"></ellipse><ellipse cx="31" cy="30.5" rx="4.2" ry="3.4" fill="currentColor" fill-opacity="0.85"></ellipse></symbol>
 <symbol id="s-smile" viewBox="0 0 48 48"><circle cx="24" cy="24" r="16.5" fill="currentColor" mask="url(#hk)" stroke="none"></circle><circle cx="24" cy="24" r="16.5"></circle><path d="M18 19.5v2.4M30 19.5v2.4"></path><path d="M16.5 28c2 3.8 4.6 5.6 7.5 5.6s5.5-1.8 7.5-5.6"></path></symbol>
 <symbol id="s-ticket" viewBox="0 0 48 48"><path d="M10 5h28v38H10z" fill="currentColor" fill-opacity="0.16"></path><path d="M14 10h9v11h-9z" fill="currentColor" mask="url(#hk)" stroke="none"></path><path d="M14 10h9v11h-9z"></path><path d="M27 12h7M27 17h7M14 27h20M14 32h20M14 37h12"></path></symbol>
-<symbol id="s-pen" viewBox="0 0 48 48"><path d="M5 20h28l7 4-7 4H5z" fill="currentColor" mask="url(#hk)" stroke="none"></path><path d="M5 20h28l7 4-7 4H5z"></path><path d="M5 20h11v8H5z" fill="currentColor" mask="url(#hk)" stroke="none"></path><path d="M5 20h11v8H5z"></path><path d="M8 20v-4h8M40 24h3"></path></symbol>
+<symbol id="s-pen" viewBox="0 0 48 48"><path d="M5 20h28l7 4-7 4H5z" fill="currentColor" mask="url(#hk)" stroke="none"></path><path d="M5 20h28l7 4-7 4H5z"></path><path d="M5 20h11v8H5z" fill="currentColor" fill-opacity="0.92"></path><path d="M8 20v-4h8M40 24h3"></path></symbol>
 <symbol id="s-omr" viewBox="0 0 48 48"><path d="M9 5h30v38H9z" fill="currentColor" fill-opacity="0.14"></path><ellipse cx="17" cy="15" rx="2.6" ry="3.4"></ellipse><ellipse cx="24" cy="15" rx="2.6" ry="3.4" fill="currentColor" fill-opacity="0.95"></ellipse><ellipse cx="31" cy="15" rx="2.6" ry="3.4"></ellipse><ellipse cx="17" cy="24" rx="2.6" ry="3.4" fill="currentColor" fill-opacity="0.95"></ellipse><ellipse cx="24" cy="24" rx="2.6" ry="3.4"></ellipse><ellipse cx="31" cy="24" rx="2.6" ry="3.4"></ellipse><ellipse cx="17" cy="33" rx="2.6" ry="3.4"></ellipse><ellipse cx="24" cy="33" rx="2.6" ry="3.4"></ellipse><ellipse cx="31" cy="33" rx="2.6" ry="3.4" fill="currentColor" fill-opacity="0.95"></ellipse></symbol>
 <symbol id="s-watch" viewBox="0 0 48 48"><path d="M18 4h12l-1 9H19zM19 35h10l1 9H18z" fill="currentColor" mask="url(#hk)" stroke="none"></path><path d="M18 4h12l-1 9H19zM19 35h10l1 9H18z"></path><circle cx="24" cy="24" r="11" fill="currentColor" mask="url(#hk)" stroke="none"></circle><circle cx="24" cy="24" r="11"></circle><path d="M24 17v7l5 3"></path></symbol>
 <symbol id="s-lunch" viewBox="0 0 48 48"><path d="M5 17h38v5H5z" fill="currentColor" mask="url(#hk)" stroke="none"></path><path d="M5 17h38v5H5z"></path><path d="M7 22h34v16a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4z" fill="currentColor" mask="url(#hk)" stroke="none"></path><path d="M7 22h34v16a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4z"></path><path d="M24 22v20M28 13l14-6M29 15l14-5"></path></symbol>
@@ -219,7 +220,7 @@ body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
 <svg class="c-d chalky" viewBox="0 0 190 250" aria-hidden="true" style="left: 40px; top: 34px; width: 190px; height: 250px; color: #F2EFE6"><path d="M12 14C62 10 128 13 178 10c3 76 0 152 3 228-56 3-118-1-170 2-2-76 2-150-1-226z" style="fill: currentColor; fill-opacity: 0.1"></path><path d="M14 60c54-3 112 1 164-2"></path><path d="M26 78h56v72H26z" style="fill: #9DCCEB; fill-opacity: 0.18"></path><circle cx="54" cy="106" r="15" style="fill: #F2A2B6; mask: url(#hkB); stroke: none"></circle><circle cx="54" cy="106" r="15"></circle><path d="M49 103v2M59 103v2M48 111c3 4 9 4 12 0M32 150c3-15 41-15 44 0"></path><path d="M96 86h68M96 106h68M96 126h50M26 176h138M26 200h138M26 224h90" style="stroke-width: 2.6"></path><circle cx="150" cy="212" r="17" style="fill: #F2A2B6; mask: url(#hkB); stroke: none"></circle><circle cx="150" cy="212" r="17" style="stroke: #F2A2B6"></circle></svg>
 <p class="c-txt chalky" style="left: 52px; top: 46px; width: 166px; font-size: 30px; font-weight: 700; color: #F2EFE6">수 험 표</p>
 <p class="c-txt chalky" style="left: 178px; top: 237px; width: 24px; font-size: 18px; font-weight: 700; color: #F2EFE6">인</p>
-<svg class="c-d chalky" viewBox="0 0 240 90" aria-hidden="true" style="left: 1338px; top: 466px; width: 240px; height: 90px; color: #F2EFE6"><path d="M30 32h158l16 13-16 13H30a13 13 0 0 1 0-26z" style="fill: currentColor; fill-opacity: 0.14"></path><path d="M30 32h42v26H30a13 13 0 0 1 0-26z" style="fill: currentColor; mask: url(#hkB); stroke: none"></path><path d="M30 32h42v26H30a13 13 0 0 1 0-26z"></path><path d="M42 32v-10h34v10"></path><path d="M204 45h22" style="stroke-width: 7"></path></svg>
+<svg class="c-d chalky" viewBox="0 0 240 90" aria-hidden="true" style="left: 1338px; top: 466px; width: 240px; height: 90px; color: #F2EFE6"><path d="M30 32h158l16 13-16 13H30a13 13 0 0 1 0-26z" style="fill: currentColor; fill-opacity: 0.14"></path><path d="M30 32h42v26H30a13 13 0 0 1 0-26z" style="fill: currentColor; fill-opacity: 0.92"></path><path d="M42 32v-10h34v10"></path><path d="M204 45h22" style="stroke-width: 7"></path></svg>
 <p class="c-txt chalky" style="left: 1414px; top: 504px; width: 110px; font-size: 14px; font-weight: 700; color: #F2EFE6; letter-spacing: 0.02em">컴퓨터용 사인펜</p>
 <svg class="c-d chalky" viewBox="0 0 150 100" aria-hidden="true" style="left: 60px; top: 432px; width: 150px; height: 100px; color: #F2EFE6"><path d="M6 8h138v84H6z" style="fill: currentColor; fill-opacity: 0.09"></path><path d="M6 28h138"></path><ellipse cx="28" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="52" cy="50" rx="7" ry="9" style="stroke-width: 2.6; fill: currentColor; fill-opacity: .9"></ellipse><ellipse cx="76" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="100" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="124" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="28" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="52" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="76" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="100" cy="74" rx="7" ry="9" style="stroke-width: 2.6; fill: currentColor; fill-opacity: .9"></ellipse><ellipse cx="124" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse></svg>
 <p class="c-txt chalky" style="left: 70px; top: 444px; width: 130px; font-size: 14px; font-weight: 700; color: #F2EFE6; text-align: center; letter-spacing: 0.08em">OMR 답안지</p>
@@ -475,6 +476,51 @@ function rectOf(b) { var w = b.offsetWidth, h = b.offsetHeight, x = +b.dataset.x
 function grow(a, b) { a[0] = Math.min(a[0], b[0]); a[1] = Math.min(a[1], b[1]); a[2] = Math.max(a[2], b[2]); a[3] = Math.max(a[3], b[3]); }
 function hits(a, list, p) { return list.some(function (b) { return a[0] < b[2] + p && a[2] > b[0] - p && a[1] < b[3] + p && a[3] > b[1] - p; }); }
 function others(skip) { var out = [CL]; each("#items .it", function (b) { if (b.dataset.id !== skip && !b.classList.contains("hid")) out.push(rectOf(b)); }); return out; }
+/* 겹침 검사는 글 상자가 아니라 "실제 글자 줄"과 "그림" 단위로 한다. 그래서 빈틈에 빼곡하게 쓸 수 있고, 글자끼리는 절대 안 겹친다 */
+var CR = null;
+function wm() { var t = getComputedStyle(world).transform; try { return t && t !== "none" ? new DOMMatrix(t) : new DOMMatrix(); } catch (e) { return { a: V.s, e: V.tx, f: V.ty }; } }
+function relRects(b) {
+  var c = b._rc, key = b.dataset.k || "", s, q, cx, cy, out = [], ink, rg, list, i, e;
+  if (c && c.k === key) return c.r;
+  s = wm().a || 1; q = b.getBoundingClientRect(); cx = q.left + q.width / 2; cy = q.top + q.height / 2;
+  function add(r) { if (r && r.width > 0.5 && r.height > 0.5) out.push([(r.left - cx) / s, (r.top - cy) / s, (r.right - cx) / s, (r.bottom - cy) / s]); }
+  ink = b.querySelector(".ink");
+  if (ink) { rg = D.createRange(); rg.selectNodeContents(ink); list = rg.getClientRects(); for (i = 0; i < list.length; i++) add(list[i]); }
+  else { e = b.querySelector("svg"); if (e) add(e.getBoundingClientRect()); e = b.querySelector("em"); if (e) add(e.getBoundingClientRect()); }
+  if (!out.length) add(q);
+  b._rc = { k: key, r: out };
+  return out;
+}
+function clusterRects() {
+  if (CR) return CR;
+  var m = wm(), s = m.a || 1, out = [];
+  each("#cTitle,.c-uline,#names,#pil,#cluster .c-d,#cluster .c-txt,#from", function (e) {
+    var r = e.getBoundingClientRect();
+    if (r.width > 0.5) out.push([(r.left - m.e) / s, (r.top - m.f) / s, (r.right - m.e) / s, (r.bottom - m.f) / s]);
+  });
+  CR = out; return out;
+}
+function forgetRects() { CR = null; each("#items .it", function (b) { b._rc = null; }); $("#ghost")._rc = null; }
+function obstacles(skip) {
+  var out = clusterRects().slice();
+  each("#items .it", function (b) {
+    if (b.dataset.id === skip || b.classList.contains("hid")) return;
+    var x = +b.dataset.x, y = +b.dataset.y;
+    relRects(b).forEach(function (r) { out.push([r[0] + x, r[1] + y, r[2] + x, r[3] + y]); });
+  });
+  return out;
+}
+function clash(rel, x, y, ob, pad) {
+  var i, j, a, b, x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  for (i = 0; i < rel.length; i++) { a = rel[i]; x0 = Math.min(x0, a[0]); y0 = Math.min(y0, a[1]); x1 = Math.max(x1, a[2]); y1 = Math.max(y1, a[3]); }
+  x0 += x - pad; x1 += x + pad; y0 += y - pad; y1 += y + pad;
+  for (j = 0; j < ob.length; j++) {
+    b = ob[j];
+    if (b[0] >= x1 || b[2] <= x0 || b[1] >= y1 || b[3] <= y0) continue;
+    for (i = 0; i < rel.length; i++) { a = rel[i]; if (a[0] + x < b[2] + pad && a[2] + x > b[0] - pad && a[1] + y < b[3] + pad && a[3] + y > b[1] - pad) return true; }
+  }
+  return false;
+}
 function computeExt(withGhost) {
   var r = CL.slice(), w, h, cx, cy, n;
   each("#items .it", function (b) { if (!b.classList.contains("hid")) grow(r, rectOf(b)); });
@@ -820,6 +866,7 @@ $("#shotBtn").onclick = function () {
 };
 
 /* ---------- 크게 보기 ---------- */
+var zoomT = 0;
 function notesInOrder() { return S.items.filter(function (it) { return it.kind !== "doodle"; }).sort(function (a, b) { return Math.round(a.y / 200) - Math.round(b.y / 200) || a.x - b.x; }); }
 function openItem(id, dir) {
   var it = find(id), z = $("#zoom"), zb = $("#zb"), was = S.zoom, list, i = 0, f, st, zd = $("#zd");
@@ -843,7 +890,7 @@ function openItem(id, dir) {
     $("#zPrev").disabled = i === 0; $("#zNext").disabled = i === list.length - 1;
   }
   tools(it);
-  if (!was) { zb.className = "zb pop"; z.hidden = false; layer(function () { z.hidden = true; S.zoom = null; }); }
+  if (!was) { zoomT = Date.now(); zb.className = "zb pop"; z.hidden = false; layer(function () { z.hidden = true; S.zoom = null; }); }
   else { zb.style.setProperty("--tx", (dir < 0 ? -26 : 26) + "px"); zb.className = "zb"; void zb.offsetWidth; zb.className = "zb turn"; setView(V.s, it.x, it.y, true); }
   $("#zt").scrollTop = 0;
   try { zb.focus({ preventScroll: true }); } catch (e) {}
@@ -973,11 +1020,11 @@ function stepPlace() {
   hideAll();
   S.placing = true; D.body.classList.add("placing");
   if (d.id) { o = itemEl(d.id); if (o) o.classList.add("hid"); }
-  g.className = "it"; fillItem(g, ghostItem()); g.hidden = false;
+  g.className = "it"; fillItem(g, ghostItem()); g.hidden = false; g._rc = null;
   if (d.x == null) { p = suggest(0, 0); d.x = p[0]; d.y = p[1]; }
   else {
     g.dataset.x = d.x; g.dataset.y = d.y;
-    if (hits(rectOf(g), others(d.id), d.kind === "doodle" ? 4 : 10)) { p = suggest(d.x, d.y); d.x = p[0]; d.y = p[1]; }
+    if (clash(relRects(g), d.x, d.y, obstacles(d.id), 3)) { p = suggest(d.x, d.y); d.x = p[0]; d.y = p[1]; }
   }
   setBar("place"); $("#hint").hidden = false; drawGhost(); layout();
   setView(Math.max(V.s, readS()), d.x, d.y, true);
@@ -986,7 +1033,7 @@ function drawGhost() {
   var d = S.draft, g = $("#ghost"), bad, top = TOP + 26 + g.offsetHeight / 2;
   if (d.y < top) d.y = top;
   g.dataset.x = d.x; g.dataset.y = d.y; g.style.left = d.x + "px"; g.style.top = d.y + "px";
-  bad = hits(rectOf(g), others(d.id), d.kind === "doodle" ? 4 : 10);
+  bad = clash(relRects(g), d.x, d.y, obstacles(d.id), 3);
   g.classList.toggle("bad", bad);
   if ($("#bGo")) $("#bGo").disabled = bad;
   $("#hint").textContent = bad ? "다른 글씨랑 겹쳐요. 조금 옮겨 주세요" : (d.kind === "doodle" ? "칠판을 눌러서 붙일 자리를 골라 주세요" : "칠판을 눌러서 쓸 자리를 골라 주세요");
@@ -994,11 +1041,12 @@ function drawGhost() {
   placeFrame(computeExt(true));
 }
 function suggest(nx, ny) {
-  var g = $("#ghost"), w = g.offsetWidth, h = g.offsetHeight, list = others(S.draft.id), r = computeExt(false), c = [], x, y, i, q;
+  var g = $("#ghost"), w = g.offsetWidth, h = g.offsetHeight, ob = obstacles(S.draft.id), rel = relRects(g), r = computeExt(false), c = [], x, y, i;
   nx = nx || 0; ny = ny || 0;
+  ob.push(CL); /* 자동으로 잡아 주는 자리는 제목 둘레를 비워 둔다. 손으로는 빈틈 어디든 옮길 수 있다 */
   for (y = Math.max(r[1] - 160, TOP + 26 + h / 2); y <= r[3] + 160; y += 22) for (x = r[0] - 260; x <= r[2] + 260; x += 22) c.push([Math.hypot((x - nx) / 1.75, y - ny) + Math.random() * 46, x, y]);
   c.sort(function (a, b) { return a[0] - b[0]; });
-  for (i = 0; i < c.length; i++) { q = [c[i][1] - w / 2, c[i][2] - h / 2, c[i][1] + w / 2, c[i][2] + h / 2]; if (!hits(q, list, GAP)) return [c[i][1], c[i][2]]; }
+  for (i = 0; i < c.length; i++) if (!clash(rel, c[i][1], c[i][2], ob, 9)) return [c[i][1], c[i][2]];
   return [0, r[3] + h];
 }
 function placeGo() {
@@ -1081,7 +1129,7 @@ function header() {
   $("#tTo").textContent = T.to || "To.";
   $("#tWho").textContent = T.who || "08또래";
   $("#names").textContent = S.names.join("  "); $("#names").hidden = !S.names.length;
-  $("#pv").textContent = v; $("#pcp").textContent = T.copy || v; fitPil();
+  $("#pv").textContent = v; $("#pcp").textContent = T.copy || v; fitPil(); CR = null;
   $("#pref").textContent = T.ref || "";
   $("#from").textContent = T.from || "From. 청년부 일동";
   D.title = (T.to || "To.") + " " + (T.who || "08또래");
@@ -1137,7 +1185,8 @@ function intro() {
 function showBoard(d, src) {
   $("#gate").hidden = true; $("#ctl").hidden = false;
   apply(d, src, true);
-  if (D.fonts && D.fonts.ready) D.fonts.ready.then(function () { fitPil(); layout(); });
+  if (D.fonts && D.fonts.ready) D.fonts.ready.then(function () { fitPil(); forgetRects(); layout(); });
+  try { D.fonts.addEventListener("loadingdone", forgetRects); } catch (e) {}
   intro();
 }
 function boot() {
@@ -1204,6 +1253,8 @@ $("#sX").onclick = $("#dX").onclick = $("#zX").onclick = function () { back(); }
 $("#zPrev").onclick = function () { step(-1); };
 $("#zNext").onclick = function () { step(1); };
 $("#gate button").onclick = function () { location.reload(); };
+/* 휴대폰은 손가락을 뗀 직후 같은 자리에 "클릭"이 한 번 더 온다. 카드가 막 열린 순간의 그 클릭이 카드를 도로 닫거나 버튼을 누르지 않게 막는다 */
+$("#zoom").addEventListener("click", function (e) { if (Date.now() - zoomT < 500) { e.stopPropagation(); e.preventDefault(); } }, true);
 $("#zoom").addEventListener("click", function (e) { if (e.target === this) back(); });
 D.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && layers.length) back();
