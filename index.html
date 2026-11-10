@@ -71,6 +71,7 @@ svg.c-d{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stro
 .note .by{font-size:.66em;opacity:.82;white-space:nowrap}
 .note.mine .by{text-decoration:underline dotted;text-underline-offset:3px}
 .dood{display:flex;flex-direction:column;align-items:center;color:var(--c);padding:4px}
+#items .dood::before{content:"";position:absolute;left:-10px;top:-10px;right:-10px;bottom:-10px;border-radius:14px}
 .dood svg{width:var(--ds);height:var(--ds)}
 .dood em{margin-top:-2px;font-style:normal;font-family:var(--hand);font-weight:700;font-size:calc(var(--ds)*.25);white-space:nowrap}
 .draw path{fill:none;stroke:currentColor;stroke-width:34;stroke-linecap:round;stroke-linejoin:round}
@@ -591,6 +592,7 @@ function tap(px, py, target, dbl) {
     if (!(target.closest && target.closest("#ghost"))) { w = toWorld(px, py); S.draft.x = w[0]; S.draft.y = w[1]; drawGhost(); layout(); }
     return;
   }
+  if (!it) it = nearItem(px, py);
   if (it) return openItem(it.dataset.id);
   var er = target && target.closest ? target.closest(".eraser") : null, q;
   if (er) {
@@ -600,6 +602,14 @@ function tap(px, py, target, dbl) {
   }
   if (dbl) { if (V.s < readS() * 0.9) zoomAt(px, py, readS() * 1.15); else fitView(true); return; }
   dust(px, py, "#F2EFE6", 7);
+}
+function nearItem(px, py) {
+  var w = toWorld(px, py), m = 24 / V.s, best = null, bd = 1e9;
+  each("#items .it", function (b) {
+    var r = rectOf(b), dx = Math.max(r[0] - w[0], 0, w[0] - r[2]), dy = Math.max(r[1] - w[1], 0, w[1] - r[3]), d = Math.hypot(dx, dy);
+    if (d <= m && d < bd) { bd = d; best = b; }
+  });
+  return best;
 }
 $("#fitBtn").onclick = function () {
   if (V.s <= fitS() * 1.08) { var w = toWorld(innerWidth / 2, availH() / 2); setView(homeS(), w[0], w[1], true); }
@@ -791,7 +801,7 @@ function tools(it) {
   t.textContent = ""; t.hidden = !(S.src === "live" && (adm || (own && canWrite())));
   if (t.hidden) return;
   t.appendChild(el("span", "", own ? (it.kind === "doodle" ? "내가 그린 낙서" : "내가 쓴 글") : "관리자"));
-  if (own && it.kind !== "doodle") { x = el("button", "", "고치기"); x.type = "button"; x.onclick = function () { back(function () { openNote(it); }); }; t.appendChild(x); }
+  if (own) { x = el("button", "", "고치기"); x.type = "button"; x.onclick = function () { back(function () { if (it.kind === "doodle") openDoodle(it); else openNote(it); }); }; t.appendChild(x); }
   x = el("button", "", "옮기기"); x.type = "button"; x.onclick = function () { back(function () { moveItem(it); }); }; t.appendChild(x);
   x = el("button", "", "지우기"); x.type = "button";
   x.onclick = function () {
@@ -830,9 +840,22 @@ function openNote(edit) {
   $("#fNick").value = d.nick; $("#fBody").value = d.body; $("#fErr").textContent = "";
   stepCompose(); layer(closeFlow);
 }
-function openDoodle() {
+function decodePath(path, color) {
+  return String(path || "").split(";").map(function (st) {
+    var pts = st.trim().split(" ").filter(Boolean).map(function (p) { return p.split(",").map(Number); }).filter(function (p) { return p.length === 2 && isFinite(p[0]) && isFinite(p[1]); }), c = color, w = 1, tag;
+    if (pts.length && pts[0][0] >= 2000) { tag = pts.shift()[0] - 2000; c = CKEYS[Math.floor(tag / 10)] || color; w = PENS[tag % 10] ? tag % 10 : 1; }
+    return { c: c, w: w, pts: pts };
+  }).filter(function (st) { return st.pts.length; });
+}
+function openDoodle(edit) {
   var d = S.draft;
-  if (!d || d.id || d.kind !== "doodle") d = { kind: "doodle", shape: "heart", color: "pink", size: 1, rot: Math.round(Math.random() * 24 - 12), path: "", tab: "stamp" };
+  if (edit) {
+    d = { kind: "doodle", id: edit.id, shape: edit.shape, color: CHALK[edit.color] ? edit.color : "pink", size: +edit.size || 1, rot: +edit.rot || 0, path: edit.path || "", tab: edit.shape === "draw" ? "draw" : "stamp", x: edit.x, y: edit.y };
+    PAD.strokes = edit.shape === "draw" ? decodePath(edit.path, d.color) : []; PAD.n = 0; PAD.strokes.forEach(function (st) { PAD.n += st.pts.length; });
+  } else if (!d || d.id || d.kind !== "doodle") {
+    if (d && d.id && d.kind === "doodle") { PAD.strokes = []; PAD.n = 0; }
+    d = { kind: "doodle", shape: "heart", color: "pink", size: 1, rot: Math.round(Math.random() * 24 - 12), path: "", tab: "stamp" };
+  }
   S.draft = d; $("#dErr").textContent = "";
   stepDoodle(); layer(closeFlow);
 }
@@ -847,7 +870,7 @@ function hideAll() {
   $("#ghost").hidden = true; $("#hint").hidden = true; $("#sheet").hidden = true; $("#dsheet").hidden = true;
 }
 function stepCompose() { hideAll(); setBar(null); $("#sheet").hidden = false; $("#sheet").scrollTop = 0; syncNote(); layout(); }
-function stepDoodle() { hideAll(); setBar(null); $("#dsheet").hidden = false; $("#dsheet").scrollTop = 0; syncDoodle(); layout(); }
+function stepDoodle() { hideAll(); setBar(null); $("#dsheet").hidden = false; $("#dsheet").scrollTop = 0; syncDoodle(); padRender(); layout(); }
 function closeFlow() { hideAll(); setBar(canWrite() ? "board" : null); layout(); }
 function syncNote() {
   var d = S.draft, c;
