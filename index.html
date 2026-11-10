@@ -72,6 +72,9 @@ svg.c-d{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stro
 .note .ink{display:block;white-space:pre-wrap;overflow-wrap:anywhere}
 .note .by{font-size:.66em;opacity:.82;white-space:nowrap}
 .note.mine .by{text-decoration:underline dotted;text-underline-offset:3px}
+body.writer #items .it.mine::after{content:"";position:absolute;right:-16px;top:-18px;width:40px;height:40px;border-radius:50%;background:#F3D46B url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322372D' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20l1-4.5L15.5 5a2.1 2.1 0 0 1 3 3L8 18.5z'/%3E%3Cpath d='M13.5 7l3 3'/%3E%3C/svg%3E") center/22px no-repeat;box-shadow:0 2px 6px rgba(0,0,0,.35);animation:mineBadge 1.4s ease-in-out 1.2s 3}
+body.placing #items .it.mine::after{display:none}
+@keyframes mineBadge{50%{transform:scale(1.22)}}
 .dood{display:flex;flex-direction:column;align-items:center;color:var(--c);padding:4px}
 #items .dood::before{content:"";position:absolute;left:-10px;top:-10px;right:-10px;bottom:-10px;border-radius:14px}
 .dood svg{width:var(--ds);height:var(--ds)}
@@ -173,7 +176,7 @@ body.writer #chip{bottom:calc(96px + env(safe-area-inset-bottom))}
 #hint{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top));z-index:20;width:max-content;max-width:94vw;transform:translateX(-50%);padding:9px 16px;border:1.5px solid rgba(242,239,230,.35);border-radius:99px;background:rgba(24,40,33,.94);font-size:14px;text-align:center}
 #hint.bad{border-color:#F28B9E;color:#F9C9D3}
 body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
-#toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));z-index:40;width:max-content;max-width:88vw;padding:11px 18px;border-radius:12px;background:rgba(251,248,240,.97);color:var(--ink);font-size:14.5px;text-align:center;opacity:0;transform:translate(-50%,12px);transition:opacity .3s,transform .3s;pointer-events:none}
+#toast{white-space:pre-line;position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));z-index:40;width:max-content;max-width:88vw;padding:11px 18px;border-radius:12px;background:rgba(251,248,240,.97);color:var(--ink);font-size:14.5px;text-align:center;opacity:0;transform:translate(-50%,12px);transition:opacity .3s,transform .3s;pointer-events:none}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 .dust{position:fixed;left:0;top:0;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--c);pointer-events:none;z-index:25;transition:transform .9s ease-out,opacity .9s ease-out}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -216,8 +219,8 @@ body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
 <svg class="c-d chalky" viewBox="0 0 190 250" aria-hidden="true" style="left: 40px; top: 34px; width: 190px; height: 250px; color: #F2EFE6"><path d="M12 14C62 10 128 13 178 10c3 76 0 152 3 228-56 3-118-1-170 2-2-76 2-150-1-226z" style="fill: currentColor; fill-opacity: 0.1"></path><path d="M14 60c54-3 112 1 164-2"></path><path d="M26 78h56v72H26z" style="fill: #9DCCEB; fill-opacity: 0.18"></path><circle cx="54" cy="106" r="15" style="fill: #F2A2B6; mask: url(#hkB); stroke: none"></circle><circle cx="54" cy="106" r="15"></circle><path d="M49 103v2M59 103v2M48 111c3 4 9 4 12 0M32 150c3-15 41-15 44 0"></path><path d="M96 86h68M96 106h68M96 126h50M26 176h138M26 200h138M26 224h90" style="stroke-width: 2.6"></path><circle cx="150" cy="212" r="17" style="fill: #F2A2B6; mask: url(#hkB); stroke: none"></circle><circle cx="150" cy="212" r="17" style="stroke: #F2A2B6"></circle></svg>
 <p class="c-txt chalky" style="left: 52px; top: 46px; width: 166px; font-size: 30px; font-weight: 700; color: #F2EFE6">수 험 표</p>
 <p class="c-txt chalky" style="left: 178px; top: 237px; width: 24px; font-size: 18px; font-weight: 700; color: #F2EFE6">인</p>
-<svg class="c-d chalky" viewBox="0 0 240 90" aria-hidden="true" style="left: 30px; top: 318px; width: 240px; height: 90px; color: #F2EFE6"><path d="M30 32h158l16 13-16 13H30a13 13 0 0 1 0-26z" style="fill: currentColor; fill-opacity: 0.14"></path><path d="M30 32h42v26H30a13 13 0 0 1 0-26z" style="fill: currentColor; mask: url(#hkB); stroke: none"></path><path d="M30 32h42v26H30a13 13 0 0 1 0-26z"></path><path d="M42 32v-10h34v10"></path><path d="M204 45h22" style="stroke-width: 7"></path></svg>
-<p class="c-txt chalky" style="left: 106px; top: 356px; width: 110px; font-size: 14px; font-weight: 700; color: #F2EFE6; letter-spacing: 0.02em">컴퓨터용 사인펜</p>
+<svg class="c-d chalky" viewBox="0 0 240 90" aria-hidden="true" style="left: 1338px; top: 466px; width: 240px; height: 90px; color: #F2EFE6"><path d="M30 32h158l16 13-16 13H30a13 13 0 0 1 0-26z" style="fill: currentColor; fill-opacity: 0.14"></path><path d="M30 32h42v26H30a13 13 0 0 1 0-26z" style="fill: currentColor; mask: url(#hkB); stroke: none"></path><path d="M30 32h42v26H30a13 13 0 0 1 0-26z"></path><path d="M42 32v-10h34v10"></path><path d="M204 45h22" style="stroke-width: 7"></path></svg>
+<p class="c-txt chalky" style="left: 1414px; top: 504px; width: 110px; font-size: 14px; font-weight: 700; color: #F2EFE6; letter-spacing: 0.02em">컴퓨터용 사인펜</p>
 <svg class="c-d chalky" viewBox="0 0 150 100" aria-hidden="true" style="left: 60px; top: 432px; width: 150px; height: 100px; color: #F2EFE6"><path d="M6 8h138v84H6z" style="fill: currentColor; fill-opacity: 0.09"></path><path d="M6 28h138"></path><ellipse cx="28" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="52" cy="50" rx="7" ry="9" style="stroke-width: 2.6; fill: currentColor; fill-opacity: .9"></ellipse><ellipse cx="76" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="100" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="124" cy="50" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="28" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="52" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="76" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse><ellipse cx="100" cy="74" rx="7" ry="9" style="stroke-width: 2.6; fill: currentColor; fill-opacity: .9"></ellipse><ellipse cx="124" cy="74" rx="7" ry="9" style="stroke-width: 2.6"></ellipse></svg>
 <p class="c-txt chalky" style="left: 70px; top: 444px; width: 130px; font-size: 14px; font-weight: 700; color: #F2EFE6; text-align: center; letter-spacing: 0.08em">OMR 답안지</p>
 <svg class="c-d chalky" viewBox="0 0 170 220" aria-hidden="true" style="left: 1372px; top: 30px; width: 170px; height: 220px; color: #F2EFE6"><path d="M64 10h42l-5 50H69z" style="fill: #F4AE6E; mask: url(#hkB); stroke: none"></path><path d="M64 10h42l-5 50H69z"></path><path d="M69 160h32l5 50H64z" style="fill: #F4AE6E; mask: url(#hkB); stroke: none"></path><path d="M69 160h32l5 50H64z"></path><path d="M85 180v1M85 192v1"></path><circle cx="85" cy="110" r="54" style="fill: currentColor; fill-opacity: 0.08"></circle><circle cx="85" cy="110" r="44" style="fill: #9DCCEB; fill-opacity: 0.16"></circle><path d="M139 103h9v14h-9z"></path><path d="M85 72v8M85 140v8M123 110h-8M47 110h8"></path><path d="M85 110V84M85 110l19 11" style="stroke: #F3D46B; stroke-width: 5"></path><circle cx="85" cy="110" r="3" style="fill: currentColor; fill-opacity: 1"></circle></svg>
@@ -227,7 +230,7 @@ body.placing #ctl{top:calc(64px + env(safe-area-inset-top))}
 <svg class="c-d chalky" viewBox="0 0 48 48" aria-hidden="true" style="left: 1100px; top: 236px; width: 34px; height: 34px; color: #9DCCEB"><use href="#s-sparkle"></use></svg>
 <svg class="c-d chalky" viewBox="0 0 48 48" aria-hidden="true" style="left: 358px; top: 476px; width: 48px; height: 48px; color: #B5DE9C; transform: rotate(8deg)"><use href="#s-flower"></use></svg>
 <svg class="c-d chalky" viewBox="0 0 48 48" aria-hidden="true" style="left: 1086px; top: 38px; width: 62px; height: 62px; color: #F2A2B6; transform: rotate(14deg)"><use href="#s-heart"></use></svg>
-<svg class="c-d chalky" viewBox="0 0 48 48" aria-hidden="true" style="left: 1420px; top: 480px; width: 46px; height: 46px; color: #B5DE9C; transform: rotate(-10deg)"><use href="#s-clover"></use></svg>
+<svg class="c-d chalky" viewBox="0 0 48 48" aria-hidden="true" style="left: 118px; top: 340px; width: 46px; height: 46px; color: #B5DE9C; transform: rotate(-10deg)"><use href="#s-clover"></use></svg>
 <svg class="c-d chalky" viewBox="0 0 48 48" aria-hidden="true" style="left: 236px; top: 290px; width: 30px; height: 30px; color: #F3D46B; transform: rotate(10deg)"><use href="#s-star"></use></svg>
 <svg class="c-d chalky" viewBox="0 0 48 48" aria-hidden="true" style="left: 1338px; top: 250px; width: 30px; height: 30px; color: #F3D46B"><use href="#s-sparkle"></use></svg>
 <div class="c-title" id="cTitle"><span class="to chalkL glow" id="tTo"></span><span class="who chalkL glow" id="tWho"></span></div>
@@ -577,7 +580,7 @@ function toWorld(px, py) { return [(px - V.tx) / V.s, (py - V.ty) / V.s]; }
       V.s = clampS(g.s0 * dist(a, b) / g.d0); V.tx = mx - g.wx * V.s; V.ty = my - g.wy * V.s; clampView(); applyView(false); return;
     }
     dx = e.clientX - g.x0; dy = e.clientY - g.y0;
-    if (g.type === "maybe" && Math.abs(dx) + Math.abs(dy) > 8) { g.type = g.ghost ? "ghost" : "pan"; view.classList.add("grabbing"); }
+    if (g.type === "maybe" && Math.hypot(dx, dy) > 14) { g.type = g.ghost ? "ghost" : "pan"; view.classList.add("grabbing"); }
     if (g.type === "pan") {
       var now = performance.now(), dt = Math.max(1, now - (g.lt || now - 16));
       if (g.lx != null) { g.vx = 0.7 * (e.clientX - g.lx) / dt + 0.3 * (g.vx || 0); g.vy = 0.7 * (e.clientY - g.ly) / dt + 0.3 * (g.vy || 0); }
@@ -590,7 +593,7 @@ function toWorld(px, py) { return [(px - V.tx) / V.s, (py - V.ty) / V.s]; }
     if (!P[e.pointerId]) return;
     delete P[e.pointerId];
     var k = ids(), now = Date.now();
-    if (g && g.type === "maybe" && !k.length && now - g.t0 < 600) {
+    if (g && g.type === "maybe" && !k.length && now - g.t0 < 1200) {
       var dbl = lastTap && now - lastTap.t < 320 && Math.hypot(e.clientX - lastTap.x, e.clientY - lastTap.y) < 30;
       tap(e.clientX, e.clientY, g.target, dbl); lastTap = dbl ? null : { t: now, x: e.clientX, y: e.clientY };
     }
@@ -853,9 +856,10 @@ function step(dir) {
 }
 function canWrite() { return S.src === "live" && (S.role === "admin" || (S.role === "writer" && S.open)); }
 function tools(it) {
-  var t = $("#zTools"), own = S.mine[it.id], adm = S.role === "admin" && S.src === "live", x;
-  t.textContent = ""; t.hidden = !(S.src === "live" && (adm || (own && canWrite())));
+  var t = $("#zTools"), own = S.mine[it.id], adm = S.role === "admin" && S.src === "live", x, nk = load("nick", ""), other = !own && !adm && canWrite() && !!nk && it.nick === nk;
+  t.textContent = ""; t.hidden = !(S.src === "live" && (adm || (own && canWrite()) || other));
   if (t.hidden) return;
+  if (other) { t.appendChild(el("span", "", "내가 쓴 거라면, 처음 쓴 그 휴대폰·앱에서 열어야 고칠 수 있어요")); return; }
   t.appendChild(el("span", "", own ? (it.kind === "doodle" ? "내가 그린 낙서" : "내가 쓴 글") : "관리자"));
   if (own) { x = el("button", "", "고치기"); x.type = "button"; x.onclick = function () { back(function () { if (it.kind === "doodle") openDoodle(it); else openNote(it); }); }; t.appendChild(x); }
   x = el("button", "", "옮기기"); x.type = "button"; x.onclick = function () { back(function () { moveItem(it); }); }; t.appendChild(x);
@@ -1018,7 +1022,9 @@ function placeGo() {
         if (!reduce) { b.classList.add("writing"); setTimeout(function () { b.classList.remove("writing"); }, 1300); }
         q = b.getBoundingClientRect(); dust(q.left + q.width / 2, q.top + q.height / 2, chalk(it.color), 22);
       }
-      toast(old ? (d.moving ? "옮겼어요." : "고쳤어요.") : it.kind === "doodle" ? "칠판에 붙였어요." : "칠판에 썼어요. 고마워요!");
+      var msg = old ? (d.moving ? "옮겼어요." : "고쳤어요.") : it.kind === "doodle" ? "칠판에 붙였어요." : "칠판에 썼어요. 고마워요!";
+      if (!old && !load("editTip", 0)) { save("editTip", 1); msg += NL + "연필 표시가 붙은 내 글을 누르면 고칠 수 있어요"; }
+      toast(msg);
     });
   }).catch(function (e) { $("#bGo").disabled = false; toast(e && e.status === 403 ? "쓰기가 마감됐어요." : "저장하지 못했어요. 연결을 확인하고 다시 눌러 주세요."); });
 }
